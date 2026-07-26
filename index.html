@@ -3,403 +3,654 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Ramakrishna Samudrala | Senior Technology Leader & Enterprise Architect</title>
+    <title>Dr. Ramakrishna Samudrala | Executive Leader & Enterprise Data Architect</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --primary: #1A365D;
-            --secondary: #2B6CB0;
-            --accent: #D69E2E;
-            --bg-light: #F7FAFC;
-            --text-dark: #2D3748;
-            --text-muted: #718096;
-            --white: #FFFFFF;
+            --bg-dark: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --primary-glow: #38bdf8;
+            --accent-cyan: #06b6d4;
+            --accent-violet: #8b5cf6;
+            --accent-amber: #f59e0b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --gradient-accent: linear-gradient(135deg, #38bdf8 0%, #8b5cf6 50%, #ec4899 100%);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 65%, rgba(139, 92, 246, 0.12) 0%, transparent 40%);
+            background-attachment: fixed;
         }
 
-        /* Navigation */
+        /* Glassmorphism Panel */
+        .glass-panel {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        /* Floating Navbar */
         nav {
-            background: var(--primary);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .nav-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
             max-width: 1100px;
-            margin: 0 auto;
+            z-index: 1000;
+            padding: 0.8rem 1.8rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
         }
 
-        .logo {
-            color: var(--white);
-            font-weight: bold;
-            font-size: 1.2rem;
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-decoration: none;
         }
 
         .nav-links {
             display: flex;
-            list-style: none;
             gap: 1.5rem;
+            list-style: none;
         }
 
         .nav-links a {
-            color: #E2E8F0;
+            color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--accent);
+            color: var(--primary-glow);
+            text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
         }
 
-        /* Hero Header */
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: var(--white);
-            padding: 4rem 2rem;
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 60px;
             text-align: center;
         }
 
-        .hero-container {
-            max-width: 800px;
-            margin: 0 auto;
+        .hero-content {
+            max-width: 850px;
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.5px;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 30px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            color: var(--primary-glow);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
         }
 
-        header h2 {
-            font-size: 1.2rem;
-            color: #E2E8F0;
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
+            letter-spacing: -1px;
+        }
+
+        .text-gradient {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
             font-weight: 400;
-            margin-bottom: 1.5rem;
         }
 
-        .contact-pills {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin-top: 2.5rem;
         }
 
-        .pill {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: var(--white);
-            text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .stat-card {
+            padding: 1.2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
         }
 
-        .pill:hover {
-            background: rgba(255, 255, 255, 0.25);
+        .stat-card:hover {
+            transform: translateY(-5px);
         }
 
-        /* Sections */
-        section {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: var(--white);
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-glow);
         }
 
-        .section-title {
-            color: var(--primary);
-            font-size: 1.5rem;
-            border-bottom: 2px solid var(--secondary);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        /* Grid Layouts */
-        .grid-2 {
+        /* Layout Sections */
+        section {
+            max-width: 1100px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .section-header .line {
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--card-border), transparent);
+        }
+
+        /* Award Cards */
+        .awards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.5rem;
         }
 
-        .card {
-            background: var(--bg-light);
-            padding: 1.5rem;
-            border-radius: 6px;
-            border-left: 4px solid var(--secondary);
+        .award-card {
+            padding: 1.8rem;
+            position: relative;
+            overflow: hidden;
+            border-left: 4px solid var(--accent-amber);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(30, 41, 59, 0.5) 100%);
         }
 
-        .card h3 {
-            color: var(--primary);
+        .award-card i {
+            font-size: 2rem;
+            color: var(--accent-amber);
+            margin-bottom: 1rem;
+        }
+
+        .award-card h3 {
+            font-size: 1.2rem;
             margin-bottom: 0.5rem;
         }
 
-        .badge {
-            display: inline-block;
-            background: #EBF8FF;
-            color: #2B6CB0;
-            font-size: 0.8rem;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
+        .award-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
         }
 
-        /* Experience Timeline */
-        .timeline-item {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #E2E8F0;
+        /* Competency Grid */
+        .competencies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
         }
 
-        .timeline-item:last-child {
-            border-bottom: none;
+        .comp-card {
+            padding: 1.8rem;
+            transition: all 0.3s ease;
         }
 
-        .job-header {
+        .comp-card:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+        }
+
+        .comp-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(56, 189, 248, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-glow);
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .comp-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .comp-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        /* Timeline Experience */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary-glow), var(--accent-violet), transparent);
+        }
+
+        .timeline-node {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-node::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary-glow);
+            box-shadow: 0 0 10px var(--primary-glow);
+            transform: translateX(-4px);
+        }
+
+        .exp-card {
+            padding: 1.8rem;
+        }
+
+        .exp-header {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
+            align-items: flex-start;
             flex-wrap: wrap;
-            margin-bottom: 0.5rem;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
         }
 
-        .company {
-            font-weight: bold;
-            color: var(--primary);
-            font-size: 1.1rem;
+        .exp-role {
+            font-size: 1.15rem;
+            font-weight: 700;
         }
 
-        .job-title {
-            color: var(--secondary);
+        .exp-company {
+            color: var(--primary-glow);
             font-weight: 600;
-        }
-
-        .dates {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        ul {
-            margin-left: 1.2rem;
-            margin-top: 0.5rem;
-        }
-
-        li {
-            margin-bottom: 0.4rem;
             font-size: 0.95rem;
         }
 
-        /* Awards Highlight Box */
-        .award-box {
-            background: #FEFCBF;
-            border-left: 4px solid var(--accent);
-            padding: 1rem 1.5rem;
-            margin-bottom: 1rem;
-            border-radius: 4px;
+        .exp-dates {
+            font-size: 0.85rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
         }
 
-        .award-box h4 {
-            color: #744210;
-            margin-bottom: 0.2rem;
+        .exp-list {
+            list-style: none;
         }
 
-        .award-box p {
-            color: #975A16;
+        .exp-list li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+
+        .exp-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent-violet);
+        }
+
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            font-size: 0.78rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(139, 92, 246, 0.15);
+            color: #c084fc;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .contact-btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .action-btn {
+            padding: 10px 22px;
+            border-radius: 30px;
+            text-decoration: none;
             font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
         }
 
-        /* Footer */
+        .btn-primary {
+            background: var(--gradient-accent);
+            color: var(--text-main);
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--card-border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-glow);
+        }
+
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 40px 20px;
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            border-top: 1px solid var(--card-border);
         }
 
         @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            header h1 {
-                font-size: 1.8rem;
-            }
-            .job-header {
-                flex-direction: column;
-            }
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
+            .exp-header { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">Dr. Ramakrishna Samudrala</a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#competencies">Expertise</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#awards">Honors & Awards</a></li>
-                <li><a href="#education">Education & Certifications</a></li>
-            </ul>
-        </div>
+    <!-- Floating Navbar -->
+    <nav class="glass-panel">
+        <a href="#" class="nav-logo">Dr. Ramakrishna S.</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#awards">Honors</a></li>
+            <li><a href="#expertise">Capabilities</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+        </ul>
     </nav>
 
-    <header>
-        <div class="hero-container">
-            <h1>DR. RAMAKRISHNA SAMUDRALA</h1>
-            <h2>Senior Technology Leader | BI Transformation Architect & Analytics Manager</h2>
-            <div class="contact-pills">
-                <span class="pill">📍 Hyderabad, India</span>
-                <span class="pill">📞 +91 9391330837</span>
-                <a href="mailto:ram.samudrala10@gmail.com" class="pill">✉️ ram.samudrala10@gmail.com</a>
-                <a href="https://www.linkedin.com/in/ram-samudrala" target="_blank" class="pill">🔗 LinkedIn Profile</a>
+    <!-- Hero Header -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fa-solid fa-flask-vial"></i> Ph.D. Chemist & Senior Data Architect
+            </div>
+            <h1>Transforming Enterprise Analytics with <span class="text-gradient">Precision & Scale</span></h1>
+            <p class="hero-subtitle">Senior Technology Leader & BI Transformation Manager with 17+ years leading legacy-to-cloud modernizations, cross-functional engineering teams, and high-compliance solutions.</p>
+            
+            <div class="contact-btn-group">
+                <a href="mailto:ram.samudrala10@gmail.com" class="action-btn btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i> Get in Touch
+                </a>
+                <a href="https://www.linkedin.com/in/ram-samudrala" target="_blank" class="action-btn btn-secondary">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="hero-stats">
+                <div class="glass-panel stat-card">
+                    <div class="stat-number">17+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="glass-panel stat-card">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">Engineers Managed</div>
+                </div>
+                <div class="glass-panel stat-card">
+                    <div class="stat-number">$0.52M</div>
+                    <div class="stat-label">2025 RFP Win TCV</div>
+                </div>
+                <div class="glass-panel stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">RFP Win Rate</div>
+                </div>
             </div>
         </div>
     </header>
 
+    <!-- Professional Summary -->
     <section id="about">
-        <h2 class="section-title">Professional Summary</h2>
-        <p>A highly accomplished Senior Technology Leader and Architect with over 17 years of experience in driving large-scale Data Analytics Transformation, BI Modernization, and multi-team program delivery. Proven track record leading strategic migrations of legacy reporting platforms (Cognos, Qlik, Spotfire, MicroStrategy, BusinessObjects) to modern Microsoft Power BI and Fabric environments within regulated Healthcare and Pharmaceutical domains (GxP, HIPAA, RCM).</p>
-        <br>
-        <p>Adept at leading cross-functional engineering teams (20+ resources), rescuing high-escalation/high-visibility initiatives, ensuring architectural governance, and delivering strategic business value through pre-sales solutions and RFP proposals. Holds a Ph.D., bringing advanced analytical methodology, structured research rigor, and scientific domain expertise to enterprise analytics.</p>
+        <div class="glass-panel" style="padding: 2.2rem;">
+            <p style="font-size: 1.05rem; color: #cbd5e1; line-height: 1.8;">
+                Accomplished Senior Technology Leader and Architect with over 17 years of experience driving large-scale Data Analytics Transformation, BI Modernization, and multi-team program delivery within Cognizant. Specialized in leading complex migrations of legacy reporting platforms (Cognos, Qlik, Spotfire, MicroStrategy, BusinessObjects) to modern Microsoft Power BI and Fabric environments. Combines deep architectural mastery in Lakehouse Medallion Architecture, Data Mesh, and GxP/HIPAA compliance with executive pre-sales strategy. Holds a Ph.D., bringing advanced quantitative methodologies and scientific rigor to enterprise analytics.
+            </p>
+        </div>
     </section>
 
+    <!-- Honors & Achievements -->
     <section id="awards">
-        <h2 class="section-title">Key Honors & Recognition</h2>
-        <div class="award-box">
-            <h4>🏆 Hyderabad Elixir 2025 Award – Champion of Hyderabad</h4>
-            <p>Awarded by Cognizant for performance excellence, outstanding leadership, and impactful BI modernization execution.</p>
+        <div class="section-header">
+            <h2>Honors & Key Recognition</h2>
+            <div class="line"></div>
         </div>
-        <div class="award-box">
-            <h4>👏 Cheers Award for Excellence in Delivery</h4>
-            <p>Awarded by Cognizant for successful turnaround and delivery of a high-visibility, escalated Finance department Qlik-to-Power BI migration project.</p>
-        </div>
-    </section>
-
-    <section id="competencies">
-        <h2 class="section-title">Core Competencies & Expertise</h2>
-        <div class="grid-2">
-            <div class="card">
-                <h3>Strategic Leadership</h3>
-                <span class="badge">Management & Growth</span>
-                <p>BI Transformation Strategy, Multi-Team Program Management (20+ Resources), Escalation Turnaround, RFP & Proposal Strategy ($0.52M TCV), Estimation, Executive Stakeholder Engagement.</p>
+        <div class="awards-grid">
+            <div class="glass-panel award-card">
+                <i class="fa-solid fa-trophy"></i>
+                <h3>Hyderabad Elixir 2025 Award</h3>
+                <p><strong>Champion of Hyderabad:</strong> Awarded by Cognizant for performance excellence, outstanding leadership, and impactful BI modernization execution.</p>
             </div>
-            <div class="card">
-                <h3>Cloud Architecture</h3>
-                <span class="badge">Modern Data Mesh</span>
-                <p>Microsoft Power BI & Fabric, Databricks, Azure Data Platforms, Lakehouse Medallion Architecture, Data Mesh, Federated Governance, Snowflake, Enterprise Data Warehousing.</p>
-            </div>
-            <div class="card">
-                <h3>BI Modernization</h3>
-                <span class="badge">Migration Mastery</span>
-                <p>Legacy System Conversions (Qlik Sense, Cognos, TIBCO Spotfire, MicroStrategy, BusinessObjects), Enterprise Data Modeling, DAX, Power Query, PySpark.</p>
-            </div>
-            <div class="card">
-                <h3>Regulated Analytics</h3>
-                <span class="badge">Pharma & Healthcare</span>
-                <p>Pharmaceutical Analytics, Healthcare RCM, GxP Compliance, HIPAA Standards, Scientific Research Methodology, Data-Driven Quantitative Analysis.</p>
+            <div class="glass-panel award-card" style="border-left-color: var(--primary-glow); background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, rgba(30, 41, 59, 0.5) 100%);">
+                <i class="fa-solid fa-award" style="color: var(--primary-glow);"></i>
+                <h3>Cheers Award for Delivery Excellence</h3>
+                <p>Awarded by Cognizant for stepping in to successfully rescue and deliver a high-visibility, escalated Finance department Qlik-to-Power BI migration project.</p>
             </div>
         </div>
     </section>
 
+    <!-- Core Expertise -->
+    <section id="expertise">
+        <div class="section-header">
+            <h2>Core Capabilities</h2>
+            <div class="line"></div>
+        </div>
+        <div class="competencies-grid">
+            <div class="glass-panel comp-card">
+                <div class="comp-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Executive Leadership</h3>
+                <p>BI Strategy, Multi-Team Program Management (20+ engineers), Pre-Sales RFP Solutioning ($0.52M TCV), Estimation (90%+ approval rate), Escalation Turnaround.</p>
+            </div>
+            <div class="glass-panel comp-card">
+                <div class="comp-icon"><i class="fa-solid fa-cloud"></i></div>
+                <h3>Modern Cloud Architecture</h3>
+                <p>Microsoft Power BI & Fabric, Databricks, Azure Data Platform, Lakehouse Medallion Architecture, Data Mesh, Federated Governance, Snowflake.</p>
+            </div>
+            <div class="glass-panel comp-card">
+                <div class="comp-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+                <h3>Legacy BI Conversions</h3>
+                <p>Qlik Sense, Cognos, TIBCO Spotfire, MicroStrategy, BusinessObjects to Microsoft Power BI & Fabric semantic models and DAX measures.</p>
+            </div>
+            <div class="glass-panel comp-card">
+                <div class="comp-icon"><i class="fa-solid fa-microscope"></i></div>
+                <h3>Regulated Science Analytics</h3>
+                <p>Pharmaceutical Analytics, Healthcare RCM, GxP Compliance, HIPAA Standards, Quantitative Research Methodology, Data-Driven Hypothesis Testing.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
     <section id="experience">
-        <h2 class="section-title">Professional Experience</h2>
-
-        <div class="timeline-item">
-            <div class="job-header">
-                <div>
-                    <span class="company">Cognizant Technology Solutions</span>
-                    <span style="color: var(--text-muted); font-size: 0.95rem;"> — Hyderabad, India</span><br>
-                    <span class="job-title">Sr. Architect / Sr. Manager - Projects</span>
-                </div>
-                <span class="dates">01/2024 – Present</span>
-            </div>
-            <ul>
-                <li><strong>High-Visibility Turnaround:</strong> Rescued and resolved a highly escalated Finance department project migrating complex Qlik Sense dashboards to Power BI after prior teams stalled; earned Cognizant's Cheers Award for Delivery Excellence.</li>
-                <li><strong>Business Growth:</strong> Led technical solutioning and RFP proposals, securing $0.52M TCV in 2025 through collaborative pre-sales leadership.</li>
-                <li><strong>Multi-Team Delivery:</strong> Directed two cross-functional BI teams (20+ resources) across end-to-end Power BI & Microsoft Fabric modernization initiatives.</li>
-                <li><strong>Modernization Execution:</strong> Spearheaded legacy migrations (Qlik, Cognos, Spotfire, MicroStrategy) to Power BI/Fabric and migrated Alteryx workflows using Databricks.</li>
-            </ul>
+        <div class="section-header">
+            <h2>Professional Experience</h2>
+            <div class="line"></div>
         </div>
 
-        <div class="timeline-item">
-            <div class="job-header">
-                <div>
-                    <span class="company">Amplify Analytix</span>
-                    <span style="color: var(--text-muted); font-size: 0.95rem;"> — Bangalore, India</span><br>
-                    <span class="job-title">Sr. Architect</span>
+        <div class="timeline">
+            <!-- Cognizant -->
+            <div class="timeline-node">
+                <div class="glass-panel exp-card">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-role">Sr. Architect / Sr. Manager - Projects</div>
+                            <div class="exp-company">Cognizant Technology Solutions — Hyderabad, India</div>
+                        </div>
+                        <span class="exp-dates">01/2024 – Present</span>
+                    </div>
+                    <ul class="exp-list">
+                        <li><strong>High-Visibility Project Rescue:</strong> Took over a critical, stalled Finance department project migrating complex Qlik Sense dashboards to Power BI; completed execution with high stakeholder acclaim, earning Cognizant's Cheers Award.</li>
+                        <li><strong>Business Growth:</strong> Drove technical solutioning and RFP proposals, securing $0.52M TCV in 2025 with a 100% win rate (3/3).</li>
+                        <li><strong>Multi-Team Delivery:</strong> Directed two cross-functional teams (20+ resources) across concurrent multi-million-dollar modernization programs with on-time delivery.</li>
+                        <li><strong>Platform Modernization:</strong> Spearheaded legacy reporting migrations (Qlik, Cognos, Spotfire, MicroStrategy) to Power BI/Fabric; converted Alteryx workflows using Databricks.</li>
+                    </ul>
+                    <div class="tag-group">
+                        <span class="tag">Microsoft Fabric</span>
+                        <span class="tag">Power BI</span>
+                        <span class="tag">Databricks</span>
+                        <span class="tag">Qlik Migration</span>
+                        <span class="tag">RFP Strategy</span>
+                    </div>
                 </div>
-                <span class="dates">12/2021 – 12/2023</span>
             </div>
-            <ul>
-                <li><strong>Platform Migrations:</strong> Led deployment lifecycles converting Crystal Reports and Cognos into Power BI for key Healthcare/RCM accounts.</li>
-                <li><strong>Executive Dashboards:</strong> Delivered real-time C-suite RCM dashboards driving operational cash flow improvements.</li>
-            </ul>
-        </div>
 
-        <div class="timeline-item">
-            <div class="job-header">
-                <div>
-                    <span class="company">Conifer Health Solutions</span>
-                    <span style="color: var(--text-muted); font-size: 0.95rem;"> — Tinley Park, IL, USA</span><br>
-                    <span class="job-title">Architect / Senior BI Developer / Administrator</span>
+            <!-- Amplify Analytix -->
+            <div class="timeline-node">
+                <div class="glass-panel exp-card">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-role">Sr. Architect</div>
+                            <div class="exp-company">Amplify Analytix — Bangalore, India</div>
+                        </div>
+                        <span class="exp-dates">12/2021 – 12/2023</span>
+                    </div>
+                    <ul class="exp-list">
+                        <li>Architected full deployment lifecycles converting Crystal Reports and Cognos into Power BI for key Healthcare/RCM accounts.</li>
+                        <li>Presented real-time C-suite executive dashboards providing denial rates and cash flow analytics that directly optimized revenue cycle operations.</li>
+                    </ul>
+                    <div class="tag-group">
+                        <span class="tag">Power BI</span>
+                        <span class="tag">Snowflake</span>
+                        <span class="tag">Cognos</span>
+                        <span class="tag">Healthcare RCM</span>
+                    </div>
                 </div>
-                <span class="dates">04/2015 – 11/2021</span>
             </div>
-            <ul>
-                <li>Led implementation of Oracle EDW and Cognos environments; transitioned legacy Cognos systems to Power BI with zero downtime.</li>
-            </ul>
+
+            <!-- Conifer Health Solutions -->
+            <div class="timeline-node">
+                <div class="glass-panel exp-card">
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-role">Architect / Sr. BI Developer / Administrator</div>
+                            <div class="exp-company">Conifer Health Solutions — Illinois, USA</div>
+                        </div>
+                        <span class="exp-dates">04/2015 – 11/2021</span>
+                    </div>
+                    <ul class="exp-list">
+                        <li>Led Oracle-based EDW implementations and served as Cognos SME, managing teams converting Cognos reports into Power BI and MicroStrategy with zero disruption.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Education & Credentials -->
     <section id="education">
-        <h2 class="section-title">Education & Certifications</h2>
-        <div class="grid-2">
-            <div>
-                <h3 style="color: var(--primary);">Education</h3>
-                <br>
-                <p><strong>Ph.D. Degree</strong> — University of Mississippi, USA</p>
-                <p style="color: var(--text-muted); font-size: 0.9rem;">Focus on quantitative research methodology, analytical rigor, and scientific domain expertise.</p>
-                <br>
-                <p><strong>Master's Degree</strong> — Devi Ahilya University, Indore, India</p>
+        <div class="section-header">
+            <h2>Education & Credentials</h2>
+            <div class="line"></div>
+        </div>
+        <div class="competencies-grid">
+            <div class="glass-panel comp-card">
+                <div class="comp-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <h3>Ph.D. Degree</h3>
+                <p><strong>University of Mississippi, USA</strong></p>
+                <p style="margin-top: 6px;">Advanced quantitative research methodology, analytical rigor, and scientific domain expertise applied to life sciences analytics.</p>
             </div>
-            <div>
-                <h3 style="color: var(--primary);">Professional Certifications</h3>
-                <br>
-                <p>✓ <strong>Microsoft Certified:</strong> Fabric Analytics Engineer Associate</p>
-                <p>✓ <strong>Databricks Certified:</strong> Data Engineer Associate</p>
-                <p>✓ <strong>Advanced Engineering Workshops:</strong> Generative AI with Databricks & Power BI</p>
+            <div class="glass-panel comp-card">
+                <div class="comp-icon"><i class="fa-solid fa-university"></i></div>
+                <h3>Master's Degree</h3>
+                <p><strong>Devi Ahilya University, Indore, India</strong></p>
+            </div>
+            <div class="glass-panel comp-card" style="grid-column: span 2;">
+                <div class="comp-icon"><i class="fa-solid fa-certificate"></i></div>
+                <h3>Certifications & Advanced Training</h3>
+                <ul class="exp-list" style="margin-top: 8px;">
+                    <li><strong>Microsoft Certified:</strong> Fabric Analytics Engineer Associate</li>
+                    <li><strong>Databricks Certified:</strong> Data Engineer Associate</li>
+                    <li><strong>Generative AI Engineering:</strong> Workshops on Databricks & Power BI Integration</li>
+                </ul>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Dr. Ramakrishna Samudrala. All Rights Reserved.</p>
+        <p>&copy; 2026 Dr. Ramakrishna Samudrala. Powered by GitHub Pages.</p>
     </footer>
 
 </body>
